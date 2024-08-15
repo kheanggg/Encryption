@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSA Encryption</title>
+    
+    <!-- External Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <link rel="icon" href="./images/lock.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./images/lock.png" type="image/x-icon">
+    <!-- Internal Styles -->
+    <style>
+        .navbar {
+            background-color: #f5f7fa;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-brand img {
+            height: 6.5vh;
+            margin-left: 15px;
+        }
+        .team-member {
+            margin-bottom: 30px;
+        }
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        main {
+            padding: 100px 100px;
+        }
+        .result {
+            margin-top: 10px;          /* Reduced margin for smaller whitespace */
+            padding: 5px;              /* Adjusted padding */
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            max-height: 150px;
+            overflow-y: auto;
+            font-size: 1rem;
+        }
+
+        #rsa-result {
+            margin: 0;                /* Remove margin from the result container */
+            padding: 0;               /* Remove padding from the result container */
+            color: black;             /* Change text color to black */
+            line-height: 1.5;           /* Set line height to minimize space */
+            overflow: hidden;         /* Prevent overflow to avoid scrollbars */
+        }
+
+        #rsa-result span {
+            display: block;           /* Keep items block to avoid spacing issues */
+            margin: 0;               /* Remove margin from spans */
+            padding: 0;              /* Remove padding from spans */
+        }
+
+        .mode-toggle-container {
+            padding-top:25px;
+            display: flex;
+            align-items: center;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand">
+                <img src="./images/logo1.png" alt="Logo 1" class="d-inline-block align-top">
+                <img src="./images/fe.png" alt="Logo 2" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="caesar_cipher.html">CAESAR CIPHER</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="rsa.html">RSA</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">ABOUT US</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container pt-10">
+        <div class="card shadow">
+            <div class="row g-0">
+                <!-- Image Section -->
+                <div class="col-md-6 d-none d-md-block">
+                    <img src="images/rsa_image.png" alt="RSA Encryption Image" class="img-fluid h-100 object-fit-cover">
+                </div>
+                <!-- Form Section -->
+                <div class="col-md-6 d-flex align-items-center">
+                    <div class="card-body">
+                        <h2 id="form-title" class="card-title mb-4">Encrypt your message</h2>
+                        <form id="rsa-form">
+                            <div id="rsa-encrypt-form">
+                                <div class="mb-3">
+                                    <label for="prime-p" class="form-label">Enter prime number p:</label>
+                                    <input type="number" id="prime-p" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="prime-q" class="form-label">Enter prime number q:</label>
+                                    <input type="number" id="prime-q" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="encryption-key" class="form-label">Enter encryption key (e):</label>
+                                    <input type="number" id="encryption-key" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rsa-message" class="form-label">Enter your message:</label>
+                                    <input type="text" id="rsa-message" class="form-control" required>
+                                </div>
+                            </div>
+                            <div id="rsa-decrypt-form" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="encryption-key-n" class="form-label">Enter encryption key (n):</label>
+                                    <input type="number" id="encryption-key-n" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="private-key-d" class="form-label">Enter private key (d):</label>
+                                    <input type="number" id="private-key-d" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="decrypted-message" class="form-label">Enter your encrypted message:</label>
+                                    <input type="text" id="decrypted-message" class="form-control" required>
+                                </div>
+                                
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <button type="button" id="process-button" class="btn btn-success" onclick="processRSA()">Encrypt</button>
+                                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+                                </div>
+                                <div class="mode-toggle-container">
+                                    <span class="toggle-label">Mode:</span>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="modeToggle" onchange="toggleMode()">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="rsa-result" class="result"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5">
+        <p>&copy; 2024 Team 3 Generation 9 Class A1+B.</p>
+    </footer>
+
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="rsa.js"></script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+@import url('https://fonts.cdnfonts.com/css/infra');
+
+body {
+    font-family: 'Infra', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: white;
+}
+
+header {
+    background-color: #0b1279;
+    padding: 10px 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 70px;
+    margin: 0 10px;
+}
+
+.logo-container .ite-logo {
+    height: 90px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+.nav-link.active {
+    font-weight: bold; /* Make active link bold */
+    color: #022841 !important; /* Change text color for active link */
+}
+
+
+
+
+nav ul li a {
+    font-family: 'Infra', sans-serif;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+.nav-link {
+    color: #044464;
+    text-decoration: none;
+    transition: text-shadow 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Added transition for transform */
+}
+
+.nav-link:hover {
+    color: #022841;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Stronger shadow for more pop */
+    font-weight: bold; /* Make the text bolder */
+}
+
+
+
+
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+
+.cover {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.main-image {
+    width: 80%;
+    height: auto;
+    max-height: 500px; /* Adjust as needed */
+}
+
+h1 {
+    font-size: 36px;
+    color: #022841;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+h3 {
+    color: #022841;
+}
+p {
+    color: #022841;
+}
+
+.content-container,
+.about-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+}
+
+.form-container {
+    width: 100%; /* Full width for forms */
+    color: black;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+form {
+    margin: 20px 0;
+    
+}
+
+input[type="text"], input[type="number"] {
+    padding: 10px;
+    width: calc(100% - 20px);
+    margin: 10px 0;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e67e22;
+}
+
+#encryption-result, #decryption-result {
+    color: white;
+    margin-top: 20px;
+    text-align: left;
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #022841;
+    color: white;
+    text-align: center;
+    padding: 10px 10px 0 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+footer p {
+    color: white;
+    font-family: Arial, sans-serif;
+}
+.image-container {
+    position: relative;
+}
+
+.rsa-ascii-button {
+    position: absolute;
+    top: 10px; /* Adjust this value as needed */
+    right: 10px; /* Adjust this value as needed */
+    background-color: hwb(224 7% 5%); /* Button color */
+    color: white; /* Text color */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    z-index: 10; /* Ensures button is above the image */
+}
+
+
+.form-container {
+    position: relative;
+    padding-bottom: 50px; /* Add space for the toggle at the bottom */
+}
+
+.mode-toggle-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "E";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    color: #333;
+    font-weight: bold;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+    content: "D";
+}
+
+.toggle-label {
+    color: black;
+    margin-right: 10px;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.form-control {
+    height: 38px;
+}
+
+.mode-toggle-container {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "E";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 26px;
+    color: #333;
+    font-weight: bold;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+    content: "D";
+}
+.toggle-label {
+    margin-right: 10px;
+}
+
+@media (max-width: 767.98px) {
+    .card-body {
+        padding: 1.5rem;
+        justify-content: center;
+    }
+}
+
+.form-label, .card-title {
+    color: black;
+}
