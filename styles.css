@@ -156,6 +156,17 @@ button:hover {
     background-color: #e67e22;
 }
 
+.button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust spacing between buttons and link */
+}
+
+/* Optional: Adjust the margin for the 'Previous Version' link if needed */
+.button-container a {
+    margin-left: 10px; /* Space between the buttons and the link */
+}
+
 #encryption-result, #decryption-result {
     color: white;
     margin-top: 20px;

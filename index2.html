@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSA Encryption</title>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>RSA Encryption/Decryption</h1>
+        <p class="description">RSA is a public-key cryptosystem used for secure data transmission. Enter the values for p, q, and e, along with the text to encrypt or decrypt.</p>
+        <form id="rsaForm">
+            <div id="encryptFields" class="hidden">
+                <label for="pEncrypt">Enter prime number p:</label>
+                <input autocomplete="off" type="number" id="pEncrypt" name="p" required>
+                <span id="pError" class="error-message"></span>
+                
+                <label for="qEncrypt">Enter prime number q:</label>
+                <input autocomplete="off" type="number" id="qEncrypt" name="q" required>
+                <span id="qError" class="error-message"></span>
+                
+                <label for="eEncrypt">Enter encryption key (e):</label>
+                <input autocomplete="off" type="number" id="eEncrypt" name="e" required>
+        
+                <label for="messageEncrypt">Enter your message:</label>
+                <input autocomplete="off" type="text" id="messageEncrypt" name="message" required>
+            </div>
+            
+            <div id="decryptFields" class="hidden">
+                <label for="nDecrypt">Enter encryption key (n):</label>
+                <input autocomplete="off" type="number" id="nDecrypt" name="n" required>
+                
+                <label for="dDecrypt">Enter a private key (d):</label>
+                <input autocomplete="off" type="number" id="dDecrypt" name="d" required>
+                
+                <label for="messageDecrypt">Enter your message:</label>
+                <input autocomplete="off" type="text" id="messageDecrypt" name="message" required>
+            </div>
+            
+            <button type="submit" id="processButton">Encrypt</button>
+            <button type="button" id="resetButton">Reset</button>
+        </form>
+        
+        <div id="result">
+            <p><strong>Original message:</strong> <span id="originalMessage"></span></p>
+            <p><strong>Processed message:</strong> <span id="processedMessage"></span></p>
+            <p id="publicKey"><strong>Public Key (n, e):</strong> <span id="publicKeyValue"></span></p>
+            <p id="privateKey"><strong>Private Key (n, d):</strong> <span id="privateKeyValue"></span></p>
+            <p id="usedKey"><strong>Used Key (n, d):</strong> <span id="usedKeyValue"></span></p>
+        </div>
+        <div class="toggle-container">
+            <span class="toggle-label">Mode:</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="modeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <script src="index2.js"></script>
+</body>
+</html>
