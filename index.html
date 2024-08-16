@@ -13,20 +13,62 @@
             background-color: #f5f7fa;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
         }
+        
 
+        .navbar-brand {
+            display: flex;
+            align-items: center; /* Vertically align images */
+            padding: 0; /* Remove padding around navbar-brand */
+        }
+        
         .navbar-brand img {
-            height: 6.5vh;
-            margin-left: 15px;
+            height: 6.5vh; /* Set the height to 6.5% of the viewport height */
+            width: auto; /* Maintain aspect ratio */
+            margin: 0; /* Remove margin around images */
+        }
+        
+        /* Spacing specifically for the first image */
+        .navbar-brand:first-of-type img {
+            margin-right: 10px; /* Adjust this value for desired spacing */
+        }
+        
+
+        .welcome-section {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .encryption-types {
+            display: flex;
+            justify-content: space-around;
+            padding: 0;
+            padding-bottom: 50px;
+        }
+
+        .encryption-type {
+            width: 45%;
+            text-align: center;
+        }
+        h2 {
+            color: #022841;
+        }
+        ul li {
+            color: #022841;
+            list-style-type: none;
         }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand">
-                <img src="./images/logo1.png" alt="Logo 1" class="d-inline-block align-top">
-                <img src="./images/fe.png" alt="Logo 2" class="d-inline-block align-top">
-            </a>
+            <div class="logo-container">
+                <a href="https://www.rupp.edu.kh/" target="_blank">
+                    <img src="./images/logo1.png" alt="Logo 1">
+                </a>
+                <a href="https://www.fe.rupp.edu.kh/" target="_blank">
+                    <img src="./images/fe.png" alt="Logo 2">
+                </a>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,8 +92,47 @@
     </nav>
     
     <main>
-        <div>
+        <div class="welcome-section">
+            <h1>Welcome to the world of encryption</h1>
+        </div>
+        <div class="encryption-types">
+            <div class="encryption-type">
+                <h2>RSA Encryption</h2>
+                <p><strong>RSA Encryption (Rivest-Shamir-Adleman)</strong> is a widely used public-key cryptographic system that secures data transmission over the internet. It works on the principle of factoring large prime numbers and is based on asymmetric encryption, meaning it uses two keys: a public key for encryption and a private key for decryption. <span class="learn-more"><a href="https://www.techtarget.com/searchsecurity/definition/RSA#:~:text=RSA%20is%20a%20type%20of,is%20used%20to%20decrypt%20it." target="_blank">Learn More</a></span></p>
 
+                <h5>Key Concepts:</h5>
+                <ul>
+                    <li><strong>Public Key:</strong> Shared openly, used to encrypt messages.</li>
+                    <li><strong>Private Key:</strong> Kept secret, used to decrypt messages encrypted with the corresponding public key.</li>
+                    <li><strong>Security:</strong> The security of RSA relies on the difficulty of factoring the product of two large prime numbers, making it computationally infeasible to derive the private key from the public key.</li>
+                </ul>
+                
+                <h5>Use Cases:</h5>
+                <ul>
+                    <li><strong>Data Encryption:</strong> RSA is often used to securely transmit data.</li>
+                    <li><strong>Digital Signatures:</strong> It can also verify the authenticity and integrity of messages.</li>
+                </ul>
+                
+                <p>RSA remains a cornerstone of secure communications, despite its vulnerabilities to advances in quantum computing.</p>
+            </div>
+            <div class="encryption-type">
+                <h2>Caesar Cipher</h2>
+                <p>The <strong>Caesar Cipher</strong> is one of the simplest and oldest encryption techniques, dating back to Julius Caesar. It's a type of substitution cipher where each letter in the plaintext is shifted a certain number of places down or up the alphabet. <span class="learn-more"><a href="https://www.geeksforgeeks.org/caesar-cipher-in-cryptography/" target="_blank">Learn More</a></span></p>
+                
+                <h5>Key Concepts:</h5>
+                <ul>
+                    <li><strong>Shift Value:</strong> The number of positions each letter is moved. The shift value is the key to both encryption and decryption.</li>
+                    <li><strong>Simple and Vulnerable:</strong> Although easy to implement, the Caesar Cipher is easily broken by brute force or frequency analysis, making it insecure for modern use.</li>
+                </ul>
+                
+                <h5>Use Cases:</h5>
+                <ul>
+                    <li><strong>Educational Tool:</strong> Often used to introduce basic cryptographic concepts.</li>
+                    <li><strong>Historical Communication:</strong> Used in ancient times for simple message encoding.</li>
+                </ul>
+                
+                <p>Despite its simplicity, the Caesar Cipher is an important stepping stone in the history of cryptography.</p>
+            </div>
         </div>
     </main>
     <footer>

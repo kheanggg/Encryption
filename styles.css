@@ -105,9 +105,10 @@ h1 {
 h2 {
     font-size: 24px;
     margin: 10px 0;
+    color: #022841;
 }
 
-h3 {
+h3, h5 {
     color: #022841;
 }
 p {
@@ -346,4 +347,34 @@ input:checked + .slider:before {
 
 .form-label, .card-title {
     color: black;
+}
+.learn-more a {
+    text-decoration: none;
+    color: #007BFF;
+}
+.learn-more a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for mobile view */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 5vh; /* Adjust height for smaller screens */
+    }
+    
+    /* Reduce spacing between logos on mobile view */
+    .navbar-brand:first-of-type img {
+        margin-right: 5px; /* Reduced spacing for mobile view */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-brand img {
+        height: 4vh; /* Further reduce height for very small screens */
+    }
+    
+    /* Further reduce spacing between logos on very small screens */
+    .navbar-brand:first-of-type img {
+        margin-right: 3px; /* Further reduced spacing for very small screens */
+    }
 }
