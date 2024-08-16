@@ -393,7 +393,7 @@ input:checked + .slider:before {
 @media (max-width: 768px) {
     .encryption-types {
         display: block; /* Stack elements vertically */
-        margin: 0 auto; /* Center the block element horizontally */
+        margin: 0 0; /* Center the block element horizontally */
         padding: 0 0em; /* Optional: Add some horizontal padding for better appearance */
         text-align: center; /* Center the text inside the block element */
         max-width: 90%; /* Optional: Restrict width for better readability */
