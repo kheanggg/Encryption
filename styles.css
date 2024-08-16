@@ -389,3 +389,24 @@ input:checked + .slider:before {
         margin-right: 3px; /* Further reduced spacing for very small screens */
     }
 }
+
+@media (max-width: 768px) {
+    .encryption-types {
+        display: block; /* Stack elements vertically */
+        margin: 0 auto; /* Center the block element horizontally */
+        padding: 0 1em; /* Optional: Add some horizontal padding for better appearance */
+        text-align: center; /* Center the text inside the block element */
+        max-width: 90%; /* Optional: Restrict width for better readability */
+    }
+    
+    /* Adjust child elements if necessary */
+    .encryption-types h2,
+    .encryption-types p,
+    .encryption-types ul {
+        display: block; /* Ensure block display for vertical stacking */
+        margin-bottom: 1em; /* Add space between elements */
+    }
+    .encryption-type {
+        width: 100%;
+    }
+}
